@@ -1,26 +1,29 @@
 import "./styles.css";
 
+import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const actionName = (name) => {
+import { Todos } from "./components/Todos";
+
+const addTodoAction = (description) => {
   return {
-    type: "CHANGE_NAME",
-    payload: name
+    type: "ADD_TODO",
+    payload: [{ description }],
   };
 };
 
 export default function App() {
   const { name, surname } = useSelector((state) => state);
+
   const dispatch = useDispatch();
+  const todoInput = useRef();
 
-  const handleChange = (event) => {
+  const handleClick = () => {
     const {
-      target: { value }
-    } = event;
+      current: { value },
+    } = todoInput;
 
-    const action = actionName(value);
-
-    dispatch(action);
+    dispatch(addTodoAction(value));
   };
 
   return (
@@ -29,7 +32,11 @@ export default function App() {
         Hello {name} {surname}
       </h1>
       <h2>Start editing to see some magic happen!</h2>
-      <input defaultValue="" onChange={handleChange} />
+      <div className="todo-add-container">
+        <input defaultValue="" ref={todoInput} />
+        <button onClick={handleClick}>Add todo</button>
+      </div>
+      <Todos />
     </div>
   );
 }

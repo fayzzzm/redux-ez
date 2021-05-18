@@ -1,12 +1,13 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import { asyncFunctionMiddleware } from "./middleware";
 
 const initialState = {
   name: "Mustafo",
   surname: "Faiz",
-  todos: []
+  todos: [],
 };
 
-const reducer = (state, action) => {
+const reducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -20,4 +21,6 @@ const reducer = (state, action) => {
   }
 };
 
-export const store = createStore(reducer, initialState);
+const middlewareEnhancer = applyMiddleware(asyncFunctionMiddleware);
+
+export const store = createStore(reducer, middlewareEnhancer);

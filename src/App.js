@@ -18,7 +18,7 @@ export default function App() {
   const dispatch = useDispatch();
   const todoInput = useRef();
 
-  const handleClick = () => {
+  const handleClick = (dispatch, getState) => {
     const {
       current: { value },
     } = todoInput;
@@ -34,7 +34,7 @@ export default function App() {
       <h2>Start editing to see some magic happen!</h2>
       <div className="todo-add-container">
         <input defaultValue="" ref={todoInput} />
-        <button onClick={handleClick}>Add todo</button>
+        <button onClick={() => dispatch(handleClick)}>Add todo</button>
       </div>
       <Todos />
     </div>

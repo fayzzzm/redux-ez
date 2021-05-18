@@ -7,3 +7,17 @@ export const asyncFunctionMiddleware = (storeAPI) => (next) => (action) => {
 
   return next(action);
 };
+
+export const loggerMiddleware = (storeAPI) => (next) => (action) => {
+  const { getState } = storeAPI;
+
+  const previousStore = getState();
+  console.log("prev store:", previousStore);
+
+  next(action);
+
+  const newStore = getState();
+  console.log("new store:", newStore);
+
+  return;
+};

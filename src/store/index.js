@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
-import { asyncFunctionMiddleware } from "./middleware";
+import { asyncFunctionMiddleware, loggerMiddleware } from "./middleware";
 
 const initialState = {
   name: "Mustafo",
@@ -21,6 +21,9 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const middlewareEnhancer = applyMiddleware(asyncFunctionMiddleware);
+const middlewareEnhancer = applyMiddleware(
+  asyncFunctionMiddleware,
+  loggerMiddleware
+);
 
 export const store = createStore(reducer, middlewareEnhancer);

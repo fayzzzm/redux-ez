@@ -2,7 +2,7 @@ import {
   CHANGE_SURNAME,
   CHANGE_NAME,
   TOGGLE_EDIT,
-} from "../../constants/profile";
+} from "../../../constants/profile";
 
 const initialState = {
   name: "Mustafo",

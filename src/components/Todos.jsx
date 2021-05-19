@@ -4,8 +4,6 @@ import { TodoItem } from "./TodoItem";
 export const Todos = () => {
   const { list } = useSelector((state) => state.todos);
 
-  console.log(list);
-
   return (
     <div className="todos-container">
       {list.map((todo, index) => (

@@ -1,10 +1,11 @@
 import "./styles.css";
 
 import { useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { Todos } from "./components/Todos";
 import { Profile } from "./components/Profie";
+import { User } from "./components/User";
 
 const addTodoAction = (description) => {
   return {
@@ -14,12 +15,10 @@ const addTodoAction = (description) => {
 };
 
 export default function App() {
-  const { name, surname } = useSelector((state) => state.profile);
-
   const dispatch = useDispatch();
   const todoInput = useRef();
 
-  const handleClick = (dispatch) => {
+  const handleClick = () => {
     const {
       current: { value },
     } = todoInput;
@@ -33,9 +32,10 @@ export default function App() {
       <h2>Start editing to see some magic happen!</h2>
       <div className="todo-add-container">
         <input defaultValue="" ref={todoInput} />
-        <button onClick={() => dispatch(handleClick)}>Add todo</button>
+        <button onClick={() => handleClick}>Add todo</button>
       </div>
       <Todos />
+      <User />
     </div>
   );
 }

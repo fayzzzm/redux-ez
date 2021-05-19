@@ -1,8 +1,13 @@
-import { CHANGE_SURNAME, CHANGE_NAME } from "../../constants/profile";
+import {
+  CHANGE_SURNAME,
+  CHANGE_NAME,
+  TOGGLE_EDIT,
+} from "../../constants/profile";
 
 const initialState = {
   name: "Mustafo",
   surname: "Faiz",
+  editActive: false,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -17,6 +22,10 @@ const profileReducer = (state = initialState, action) => {
 
     case CHANGE_SURNAME:
       previousProfile.surname = payload;
+      break;
+    case TOGGLE_EDIT:
+      previousProfile.editActive = !previousProfile.editActive;
+      break;
     default:
       break;
   }

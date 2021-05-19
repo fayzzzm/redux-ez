@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Todos } from "./components/Todos";
+import { Profile } from "./components/Profie";
 
 const addTodoAction = (description) => {
   return {
@@ -18,7 +19,7 @@ export default function App() {
   const dispatch = useDispatch();
   const todoInput = useRef();
 
-  const handleClick = (dispatch, getState) => {
+  const handleClick = (dispatch) => {
     const {
       current: { value },
     } = todoInput;
@@ -28,9 +29,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>
-        Hello {name} {surname}
-      </h1>
+      <Profile />
       <h2>Start editing to see some magic happen!</h2>
       <div className="todo-add-container">
         <input defaultValue="" ref={todoInput} />

@@ -7,13 +7,13 @@ import { Todos } from "./components/Todos";
 
 const addTodoAction = (description) => {
   return {
-    type: "ADD_TODO",
-    payload: [{ description }],
+    type: "add_todo",
+    payload: { description },
   };
 };
 
 export default function App() {
-  const { name, surname } = useSelector((state) => state);
+  const { name, surname } = useSelector((state) => state.profile);
 
   const dispatch = useDispatch();
   const todoInput = useRef();

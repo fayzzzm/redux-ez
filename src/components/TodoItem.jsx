@@ -1,4 +1,6 @@
 export const TodoItem = (props) => {
+  console.log(props);
+
   const { index, description } = props;
 
   return (
